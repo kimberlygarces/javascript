@@ -11,6 +11,18 @@ var Kimberly = {
     drone: false
 }
 
+var Daniel = {
+
+    nombre: 'Daniel',
+    apellido: 'Vasquez',
+    edad: 16,
+    ingeniero: false,
+    cocinero: false,
+    dj: false,
+    guitarrista: true,
+    drone: true
+}
+
 function imprimirProfesiones(persona){
     console.log(`${persona.nombre} es:`)
 
@@ -61,6 +73,17 @@ function imprimirSiesMayorDeEdad(persona){
 
         console.log(`${persona.nombre} 'Es menor de edad'`)
 
+}
+
+function peromitirAcceso(persona){
+
+    if(!esMayorDeEdad(persona)){
+
+        console.log("ACCESO DENEGADO")
+    }else{
+        console.log("ACCESO PERMITIDO")
+
+    }
 }
 
 // imprimirSiesMayorDeEdad(Kimberly)
