@@ -63,6 +63,8 @@ const MAYORIA_DE_EDAD = 18
 
 const esMayorDeEdad = ({edad}) => edad >= MAYORIA_DE_EDAD
 
+const esMenorDeEdad = ({edad}) => edad <= MAYORIA_DE_EDAD
+
 
 function imprimirSiesMayorDeEdad(persona){
 
@@ -71,7 +73,10 @@ function imprimirSiesMayorDeEdad(persona){
         console.log(`${persona.nombre} 'Es mayor de edad'`)
     }else
 
+    if(esMenorDeEdad(persona)){
+
         console.log(`${persona.nombre} 'Es menor de edad'`)
+    }
 
 }
 
