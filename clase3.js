@@ -13,7 +13,6 @@ var Dani = {
 }
 
 
-
 function ImprimirNombreEnMayuscula(persona)
 {
     //var nombre = persona.nombre
