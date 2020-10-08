@@ -8,6 +8,7 @@ function Valorpi(limite)
 
         for (var n=0;n<limite;n++){
 
+                
                 var x=Math.random()*2-1;
                 var y=Math.random()*2-1;
                 if (x*x+y*y<1)         {
