@@ -5,6 +5,7 @@ var Kim = {
 }
 
 var otraPersona = {
+    
     nombre: 'Kimberly'
 
 }
