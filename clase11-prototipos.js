@@ -1,48 +1,56 @@
-function heredaDe(prototipoHijo, prototipoPadre){
+// FORMA ANTIGUA DE ESCRIBIRLA
+// function heredaDe(prototipoHijo, prototipoPadre){
 
-    var fn = function() {}
+//     var fn = function() {}
 
-    fn.prototype = prototipoPadre.prototype
+//     fn.prototype = prototipoPadre.prototype
 
-    prototipoHijo.prototype = new fn
+//     prototipoHijo.prototype = new fn
 
-    prototipoHijo.prototype.constructor = prototipoHijo
+//     prototipoHijo.prototype.constructor = prototipoHijo
 
-}
+// }
 
-function Persona(nombre, apellido, altura){
+class Persona {
+    constructor(nombre, apellido, altura) {
 
-    this.nombre = nombre
-    this.apellido = apellido
-    this.altura = altura
-}
-
-Persona.prototype.saludar = function(){
-    console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`)
-}
-
-Persona.prototype.Altura = function(){
-    this.altura > 1.80 
-        ?console.log(`Hola, mi nombre es ${this.nombre} y soy alto`):
-        console.log(`Hola, me llamo ${this.nombre} soy bajo`)
-
-}
+        this.nombre = nombre
+        this.apellido = apellido
+        this.altura = altura
+    }
 
 
-function Desarrollador(nombre, apellido){
-    this.nombre = nombre
-    this.apellido = apellido
+    saludar() {
+        console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`)
+
+    }
+
+    soyAlto() {
+        return this.altura > 1.9
+    }
 
 }
 
-heredaDe(Desarrollador, Persona)
 
 
-Desarrollador.prototype.saludar = function() {
-    console.log(`hola, me llamo ${this.nombre} ${this.apellido} soy desarrollador`)
+// Persona.prototype.Altura = function(){
+//     this.altura > 1.80 
+//         ?console.log(`Hola, mi nombre es ${this.nombre} y soy alto`):
+//         console.log(`Hola, me llamo ${this.nombre} soy bajo`)
+
+// }
+
+class Desarrollador extends Persona {
+    constructor(nombre, apellido, altura) {
+        super(nombre,apellido,altura)
+    }
+
+    saludar() {
+        console.log(`hola, me llamo ${this.nombre} ${this.apellido} soy desarrollador`)
+
+    }
+
 }
-
-
 
 // var Kim = new Persona('Kim', 'Garces', '1.90')
 // var Erica = new Persona('Erica', 'Estrella', '1.70')
