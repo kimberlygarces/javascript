@@ -14,16 +14,23 @@ function obtenerPersonaje(id){
         })
         .fail(()=> reject(id))
         })
-
 }
 
 function onError(id){
 
     console.log(`Suserdio un error al obtenr el personaje ID`)
 }
-obtenerPersonaje(1)
-    .then(function (persona) {
-        console.log(`Personaje 1 es ${persona.name}`)
 
+obtenerPersonaje(1)
+    .then(persona => {
+        console.log(`Personaje 1 es ${persona.name}`)
+        return obtenerPersonaje(2)
+    })
+    .then(persona => {
+        console.log(`Personaje 2 es ${persona.name}`)
+        return obtenerPersonaje(3)
+    })
+    .then(persona => {
+        console.log(`Personaje 3 es ${persona.name}`)
     })
 .catch(onError)
