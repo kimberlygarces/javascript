@@ -5,11 +5,11 @@ const PEOPLE_URL = 'people/:id'
 const lukerUrl = `${API_URL}${PEOPLE_URL.replace(':id' , 1)}`
 const opts = {crossDomain: true}
 
-const onResponse = function(lukerUrl){
-    console.log(`Hola yo soy ${lukerUrl.name}`)
+const onPeopleResponse = function(persona){
+    console.log(`Hola yo soy ${persona.name}`)
 
 }
 
 
-$.get(lukerUrl, opts, onResponse)
+$.get(lukerUrl, opts, onPeopleResponse)
 
