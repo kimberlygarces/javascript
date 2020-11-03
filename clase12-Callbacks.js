@@ -21,16 +21,31 @@ function onError(id){
     console.log(`Suserdio un error al obtenr el personaje ID`)
 }
 
-obtenerPersonaje(1)
-    .then(persona => {
-        console.log(`Personaje 1 es ${persona.name}`)
-        return obtenerPersonaje(2)
-    })
-    .then(persona => {
-        console.log(`Personaje 2 es ${persona.name}`)
-        return obtenerPersonaje(3)
-    })
-    .then(persona => {
-        console.log(`Personaje 3 es ${persona.name}`)
-    })
-.catch(onError)
+var ids = [1,2,3,4,5,6,7]
+
+var promesas = ids.map(id => obtenerPersonaje(id))
+
+Promise
+    .all(promesas)
+    .then(personajes => console.log(personajes))
+    .catch(onError)
+    
+
+    //OTRA FORMA DE ESCRIBILO
+// var promesas = ids.map(function(id){
+//     return obtenerPersonaje(id)
+// })
+
+// obtenerPersonaje(1)
+//     .then(persona => {
+//         console.log(`Personaje 1 es ${persona.name}`)
+//         return obtenerPersonaje(2)
+//     })
+//     .then(persona => {
+//         console.log(`Personaje 2 es ${persona.name}`)
+//         return obtenerPersonaje(3)
+//     })
+//     .then(persona => {
+//         console.log(`Personaje 3 es ${persona.name}`)
+//     })
+// .catch(onError)
