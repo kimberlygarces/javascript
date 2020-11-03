@@ -20,9 +20,14 @@ class Persona {
     }
 
 
-    saludar() {
-        console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`)
+    saludar(fn) {
 
+        var {nombre, apellido} = this
+
+        console.log(`Hola, me llamo ${nombre} ${apellido}`)
+        if (fn) {
+            fn(nombre, apellido)
+        }
     }
 
     soyAlto() {
@@ -42,17 +47,35 @@ class Persona {
 
 class Desarrollador extends Persona {
     constructor(nombre, apellido, altura) {
-        super(nombre,apellido,altura)
+        super(nombre, apellido, altura)
     }
 
-    saludar() {
-        console.log(`hola, me llamo ${this.nombre} ${this.apellido} soy desarrollador`)
 
+    saludar(fn) {
+        var {nombre, apellido} = this
+
+        console.log(`hola, me llamo ${nombre} ${apellido} soy desarrollador`)
+
+        if (fn) {
+            fn(nombre, apellido, true)
+        }
     }
 
 }
 
-// var Kim = new Persona('Kim', 'Garces', '1.90')
-// var Erica = new Persona('Erica', 'Estrella', '1.70')
-// var Camilo = new Persona('Camilo', 'Garces', '1.50')
+function responderSaludo(nombre, apellido, esDev) {
 
+    console.log(`Buen dia ${nombre} ${apellido}`)
+    if (esDev) {
+
+        console.log(`ah mirá, no sabia que eras desarrollador`)
+    }
+
+}
+var Kim = new Persona('Kim', 'Garces', '1.90')
+var Erica = new Persona('Erica', 'Estrella', '1.70')
+var Camilo = new Desarrollador('Camilo', 'Garces', '1.50')
+
+Kim.saludar()
+Erica.saludar(responderSaludo)
+Camilo.saludar(responderSaludo)
