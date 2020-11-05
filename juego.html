@@ -110,7 +110,7 @@
             const naranja = document.getElementById('naranja')
             const verde = document.getElementById('verde')
             const puntaje = document.getElementById('puntos')
-            const ULTIMO_NIVEL = 100000
+            const ULTIMO_NIVEL = 2
 
             class Juego {
 
@@ -124,13 +124,12 @@
                 }
 
                 inicializar() {
-                    btnEmpezar.classList.add('hide')
+                    // btnEmpezar.classList.add('hide')
                     this.siguienteNivel = this.siguienteNivel.bind(this)
                     this.elegirColor = this.elegirColor.bind(this)
                     this.cambiarNivel = this.cambiarNivel.bind(this)
-                    
                     this._this = this
-                    // this.toggleBtnEmpezar()
+                    this.toggleBtnEmpezar()
                     this.nivel = 1
                     this.puntos = 0
                     this.colores = {
@@ -141,10 +140,14 @@
                     }
                 }
 
-                // toggleBtnEmpezar() {
-                // if ( document.getElementById('overlay') == null ) gameboard.appendChild(overlay)    
-                // else gameboard.removeChild(overlay)
-                // }
+               toggleBtnEmpezar(){
+
+                if(btnEmpezar.classList.contains('hide')){
+                    btnEmpezar.classList.remove('hide')
+                }else{
+                    btnEmpezar.classList.add('hide')
+                }
+               }
 
                 generarSecuencia() {
                     this.secuencia = new Array(ULTIMO_NIVEL).fill(0).map(n => Math.floor(Math.random() * 4))
@@ -154,7 +157,7 @@
 
                     if (this.nivel === 1) this.cambiarNivel()
                     
-                    else swal(`Nivel ${this.nivel - 1} superado`, `Siguiente nivel: ${this.nivel}, puntos: ${this.puntos}`, 'success')
+                    else swal(`Nivel ${this.nivel - 1} superado`,`puntos: ${this.puntos}`, 'success')
                             .then(this.cambiarNivel)
                 }
 
@@ -246,20 +249,13 @@
                 }
 
                 ganoElJuego() {
-                    swal('Simon Dice', 'Ganaste !!', 'success')
+                    swal('Felicitaciones', 'Ganaste!! Obtuviste ${this.puntos} puntos', 'success')
                         .then(this.inicializar)
                 }
 
                 perdioElJuego() {
-                    if (this.puntos > this.maxScore) {
-                        swal('Simon Dice', `Mejoraste tu puntuacion :) `, 'success')
-                            .then(() => {
-                                this.eliminarEventoClick()
-                                this.inicializar()
-                            })
-                    }else
-                    {
-                        swal('Simon Dice', `Lo lamentamos perdiste :(, puntos obtenidos `, 'error')
+                  
+                        swal(':( Perdisite!!', `Obtuviste ${this.puntos} puntos`, 'error')
                             .then(() => {
                                 this.eliminarEventoClick()
                                 this.inicializar()
@@ -267,7 +263,7 @@
                     }
                     
                 
-                }
+                
             }
 
 
