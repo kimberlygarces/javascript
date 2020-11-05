@@ -19,6 +19,10 @@
             ...persona,
             edad: persona.edad +1
         })
+
+        // Usando el método .bind, enviamos la referencia a la función sin ejecutarla, pasando el contexto como parámetro.
+        // Usando el método .call, ejecutamos inmediatamente la función con el contexto indicado
+        // Usando el método .apply, es similar a .call pero los parámetros adicionales se pasan como un arreglo de valores
     </script>
 </body>
 </html>

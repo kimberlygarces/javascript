@@ -16,6 +16,7 @@ function obtenerPersonaje(id){
         })
 }
 
+
 function onError(id){
     console.log(`ERORRRRRRR!!!!!!!!!!! No se pudo obtener el personaje con id = ${id}.`)
 }
